@@ -68,6 +68,25 @@ function Publish-VisualStudioNugetv3FeedFile {
             Method = "put"
             Form = @{file=get-item $File}
         }
-        Invoke-WebRequest @IWRParams  #-ContentType $mp.Headers.ContentType  
+        $PushResult = Invoke-WebRequest @IWRParams -SkipHttpErrorCheck
+        if ($PushResult.StatusCode -in '200','202','201'){
+            [PSCustomObject]@{
+                Statuscode = $PushResult.StatusCode
+                Status = $PushResult.StatusDescription
+                Success = $true
+            }
+        } else {
+            $resultData = $PushResult.Content | ConvertFrom-Json
+            if ($resultData.Message) {
+                Write-Error -Message $resultData.Message -TargetObject $file -ErrorId $resultData.typeName -CategoryReason $resultData.typeKey -ErrorAction Stop
+            } else {
+                [PSCustomObject]@{
+                    Statuscode = $PushResult.StatusCode
+                    Status = $PushResult.StatusDescription
+                    Success = $false
+                }
+            }
+
+        }
     }
 }
