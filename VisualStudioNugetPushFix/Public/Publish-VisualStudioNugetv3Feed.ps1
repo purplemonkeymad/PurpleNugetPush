@@ -31,6 +31,17 @@ function Publish-VisualStudioNugetv3FeedFile {
             'VSDetails' {
                 "https://$Organisation.pkgs.visualstudio.com/_packaging/$Feed/nuget/v3/index.json"
             }
+            "Repository" {
+                try {
+                    $repo = Get-PSResourceRepository -Name $Repository
+                } catch {
+                    Write-Error "Unable to get Repo Feed address, try Uri instead. Ensure you have PowershellGet Preview 3.0 or higher to use this feature." -ErrorAction Stop
+                }
+                if (-not $repo) {
+                    return # if we are here either the try catch errored so no command, or the comand didn't return anything so should have alread given an error.
+                }
+                $repo.uri
+            }
             Default { Write-Error "ParameterSet not Yet Implimented" -Category NotImplemented -ErrorAction Stop }
         }
         $endpointResult = Invoke-RestMethod -Uri $endpointURI -Credential $Credential -ErrorAction Stop
