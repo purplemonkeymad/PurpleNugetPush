@@ -76,7 +76,7 @@ function Publish-VisualStudioNugetv3FeedFile {
                 Success = $true
             }
         } else {
-            $resultData = $PushResult.Content | ConvertFrom-Json
+            $resultData = $PushResult.Content | ConvertFrom-Json -ErrorAction SilentlyContinue
             if ($resultData.Message) {
                 Write-Error -Message $resultData.Message -TargetObject $file -ErrorId $resultData.typeName -CategoryReason $resultData.typeKey -ErrorAction Stop
             } else {
