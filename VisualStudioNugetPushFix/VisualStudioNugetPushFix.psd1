@@ -33,7 +33,7 @@ Copyright = '(c) 2022 David. All rights reserved.'
 Description = 'Alternative nuget v3 publish command for VisualSudio Dev ops Artifact feeds.'
 
 # Minimum version of the Windows PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '7.2'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
