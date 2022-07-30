@@ -32,11 +32,11 @@ PSResourceRepository to publish to. The repository should be a v3 feed, v3 feeds
 Direct URI of the feed to publish to. This should be the service index not the publish endpoint.
 
 .Example
-Publish-VisualStudioNugetv3FeedFile -Credential <PSCredential> -File module.0.0.1.nuget -Uri https://mynugetfeed.example.com/index.json
+Publish-VisualStudioNugetv3FeedFile -Credential <PSCredential> -File module.0.0.1.nupkg -Uri https://mynugetfeed.example.com/index.json
 This will directly publish a file to the given feed. The Uri should be the service index of the nuget feed.
 
 .Example
-Publish-VisualStudioNugetv3FeedFile -Credential <PSCredential> -File module.0.0.1.nuget -Repository myrepo
+Publish-VisualStudioNugetv3FeedFile -Credential <PSCredential> -File module.0.0.1.nupkg -Repository myrepo
 Will retrive the repository from the PowershellGet repository list called myrepo. The feed uri can been seen using `Get-PSResourceRepository myrepo`.
 
 .Example
