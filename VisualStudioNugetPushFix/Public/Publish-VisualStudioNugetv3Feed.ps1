@@ -66,6 +66,7 @@ function Publish-VisualStudioNugetv3FeedFile {
                 throw "File path not found."
             }
         })]
+        [Alias('Path')]
         [string]$File,
         [Parameter()]
         [string]$PAT
