@@ -1,4 +1,4 @@
-# VisualStudioNugetPushFix
+# PurpleNugetPush
 
 Working publish command for the visual studio artifact feed.
 
@@ -12,13 +12,13 @@ This module only deals with publishing modules. For installing modules, you shou
 
 ## Commands
 
-### Publish-VisualStudioNuGetV3FeedFile
+### Publish-PurpleNuGetFile
 
 Publish a file to a nuget feed.
 This should work for the artifact feeds that are hosted on visualstudio.com.
 It might also work for other feeds such as github, but they are not a test target at the moment.
 
-### Publish-VisualStudioNuGetV3FeedModule
+### Publish-PurpleNuGetModule
 
 Publish a Powershell Module to a nuget feed.
 This command will use a local file repository to package a nuget file (nupkg) for pushing to the feed.
