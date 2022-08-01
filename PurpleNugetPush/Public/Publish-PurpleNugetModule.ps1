@@ -32,19 +32,19 @@ PSResourceRepository to publish to. The repository should be a v3 feed, v3 feeds
 Direct URI of the feed to publish to. This should be the service index not the publish endpoint.
 
 .Example
-Publish-VisualStudioNugetv3FeedModule -Credential <PSCredential> -Path <String> -Uri https://mynugetfeed.example.com/index.json
+Publish-PurpleNugetModule -Credential <PSCredential> -Path <String> -Uri https://mynugetfeed.example.com/index.json
 This will publish a module to the given feed. The Uri should be the service index of the nuget feed.
 
 .Example
-Publish-VisualStudioNugetv3FeedModule -Credential <PSCredential> -Path <String> -Repository myrepo
+Publish-PurpleNugetModule -Credential <PSCredential> -Path <String> -Repository myrepo
 Will retrive the repository from the PowershellGet repository list called myrepo. The feed uri can been seen using `Get-PSResourceRepository myrepo`.
 
 .Example
-Publish-VisualStudioNugetv3FeedModule -Credential <PSCredential> -Organisation <String> -Feed <String> -Path <String>
+Publish-PurpleNugetModule -Credential <PSCredential> -Organisation <String> -Feed <String> -Path <String>
 Will publish to the given Organisation and Feed names in a VisualStudio hosted Artifact feed.
 
 #>
-function Publish-VisualStudioNugetv3FeedModule {
+function Publish-PurpleNugetModule {
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory)]
@@ -125,6 +125,6 @@ function Publish-VisualStudioNugetv3FeedModule {
 
         $FeedParams.Path = $PredictedFilename
 
-        Publish-VisualStudioNugetv3FeedFile @FeedParams
+        Publish-PurpleNugetFile @FeedParams
     }
 }

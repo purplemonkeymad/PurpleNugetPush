@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.4'
+ModuleVersion = '0.1.5'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -67,12 +67,11 @@ PowerShellVersion = '7.2'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Private\Initialize-VSNFTempRepo.ps1', 
-               '.\Public\Publish-VisualStudioNugetv3Feed.ps1', 
-               '.\Public\Publish-VisualStudioNuGetV3Module.ps1')
+               '.\Public\Publish-PurpleNugetFile.ps1', 
+               '.\Public\Publish-PurpleNugetModule.ps1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Publish-VisualStudioNugetv3FeedFile', 
-               'Publish-VisualStudioNugetv3FeedModule'
+FunctionsToExport = 'Publish-PurpleNugetFile', 'Publish-PurpleNugetModule'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -92,8 +91,8 @@ AliasesToExport = @()
 # List of all files packaged with this module
 FileList = 'puild.json', 'PurpleNugetPush.psd1', 
                'Private\Initialize-VSNFTempRepo.ps1', 
-               'Public\Publish-VisualStudioNugetv3Feed.ps1', 
-               'Public\Publish-VisualStudioNuGetV3Module.ps1'
+               'Public\Publish-PurpleNugetFile.ps1', 
+               'Public\Publish-PurpleNugetModule.ps1'
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
