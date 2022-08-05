@@ -131,6 +131,7 @@ function Publish-PurpleNugetFile {
                     Statuscode = $PushResult.StatusCode
                     Status = $PushResult.StatusDescription
                     Success = $false
+                    Response = $PushResult
                 }
             }
 
