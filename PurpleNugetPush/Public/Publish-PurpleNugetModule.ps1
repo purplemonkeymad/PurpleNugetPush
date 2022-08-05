@@ -73,7 +73,9 @@ function Publish-PurpleNugetModule {
         })]
         [string]$Path,
         [Parameter()]
-        [string]$PAT
+        [string]$PAT,
+        [Parameter()]
+        [switch]$SkipDependenciesCheck
     )
     end {
         # check for existing temp repo
@@ -112,7 +114,7 @@ function Publish-PurpleNugetModule {
             Remove-Item $PredictedFilename -force -ErrorAction Ignore
         }
 
-        Publish-PSResource -Path $actualPath -Repository $testrepo.Name
+        Publish-PSResource -Path $actualPath -Repository $testrepo.Name -SkipDependenciesCheck:$SkipDependenciesCheck
 
         if (-not (Test-Path $PredictedFilename -PathType Leaf)){
             Write-Error "Unable to find published file, was expecting $PredictedFilename, but file not found." -TargetObject $PredictedFilename -ErrorAction Stop
