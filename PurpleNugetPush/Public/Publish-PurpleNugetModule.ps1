@@ -125,6 +125,10 @@ function Publish-PurpleNugetModule {
             $FeedParams.$Key = $PSBoundParameters.$Key
         }
 
+        if ($FeedParams.ContainsKey('SkipDependenciesCheck')){
+            $FeedParams.Remove('SkipDependenciesCheck')
+        }
+
         $FeedParams.Path = $PredictedFilename
 
         Publish-PurpleNugetFile @FeedParams
