@@ -125,7 +125,11 @@ function Publish-PurpleNugetFile {
         } else {
             $resultData = $PushResult.Content | ConvertFrom-Json -ErrorAction SilentlyContinue
             if ($resultData.Message) {
+                #VS nuget feed uses message and some extra fields to return errors.
                 Write-Error -Message $resultData.Message -TargetObject $file -ErrorId $resultData.typeName -CategoryReason $resultData.typeKey -ErrorAction Stop
+            } elseif ($resultData.Error) {
+                # github's nuget sends errors in error property.
+                Write-Error -Message $resultData.Error -ErrorAction Stop -ErrorId Nuget.PutApiError
             } else {
                 [PSCustomObject]@{
                     Statuscode = $PushResult.StatusCode
