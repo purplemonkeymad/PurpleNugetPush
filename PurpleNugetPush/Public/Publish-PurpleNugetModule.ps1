@@ -52,6 +52,13 @@ function Publish-PurpleNugetModule {
         [Parameter(ParameterSetName="URI")]
         [uri]$Uri,
         [Parameter(ParameterSetName="Repository")]
+        [ArgumentCompleter(
+            {
+                param($Command, $Parameter, $WordToComplete, $CommandAst, $FakeBoundParams)
+                # Do completion here.
+                (Get-PSResourceRepository ($WordToComplete+ '*')).Name
+            }
+        )]
         [string]$Repository,
         [Parameter(ParameterSetName="VSDetails",Mandatory)]
         [Alias('Organization')]
