@@ -123,7 +123,13 @@ function Publish-PurpleNugetFile {
                 Success = $true
             }
         } else {
-            $resultData = $PushResult.Content | ConvertFrom-Json -ErrorAction SilentlyContinue
+            $resultData = $PushResult.Content
+            try { 
+                $resultData = $PushResult.Content | ConvertFrom-Json -ErrorAction Stop
+            } catch {
+                # error action silentycontinue does not appear to work so
+                # have this stupid emtpy catch >:(
+            }
             if ($resultData.Message) {
                 #VS nuget feed uses message and some extra fields to return errors.
                 Write-Error -Message $resultData.Message -TargetObject $file -ErrorId $resultData.typeName -CategoryReason $resultData.typeKey -ErrorAction Stop
