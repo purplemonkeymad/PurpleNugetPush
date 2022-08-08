@@ -131,6 +131,12 @@ function Publish-PurpleNugetModule {
 
         $FeedParams.Path = $PredictedFilename
 
-        Publish-PurpleNugetFile @FeedParams
+        try{ 
+            Write-Verbose "Publishing file: $PredictedFilename"
+            Publish-PurpleNugetFile @FeedParams
+        } finally {
+            # clean up temp repo
+            Remove-VSNFTempRepo
+        }
     }
 }
