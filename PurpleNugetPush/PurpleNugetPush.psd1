@@ -51,7 +51,9 @@ PowerShellVersion = '7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @(
+    @{ModuleName='PowershellGet';ModuleVersion='3.0';Guid='1d73a601-4a6c-43c5-ba3f-619b18bbb404'}
+)
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
