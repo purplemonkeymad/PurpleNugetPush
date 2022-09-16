@@ -118,7 +118,7 @@ function Publish-PurpleNugetFile {
         $IWRParams = @{
             Uri = $puburi
             Headers = @{'X-NuGet-ApiKey'=$apikey}
-            Credential = $cred
+            Credential = $Credential
             Method = "put"
             Form = @{file=get-item $File}
         }
