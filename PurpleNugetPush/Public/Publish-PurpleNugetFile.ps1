@@ -130,7 +130,8 @@ function Publish-PurpleNugetFile {
                 Success = $true
             }
         } else {
-            $resultData = $PushResult.Content
+            # this is odd but needed due to BOM weirdness
+            $resultData = [System.IO.StreamReader]::new($PushResult.RawContentStream).ReadToEnd()
             try { 
                 $resultData = $PushResult.Content | ConvertFrom-Json -ErrorAction Stop
             } catch {
